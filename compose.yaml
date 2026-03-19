@@ -1,0 +1,15 @@
+services:
+  claude:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: claude-code
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./claude_home:/root:rw
+      - ${WORKSPACE_PATH:-.}:/workspace:rw
+    # environment:
+    #   - ANTHROPIC_API_KEY=no-key
+    #   - ANTHROPIC_BASE_URL=https://custom-host/anthropic
+    working_dir: /workspace
